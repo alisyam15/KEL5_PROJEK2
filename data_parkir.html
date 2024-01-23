@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Parkir - Admin</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/v3/plugins/bootstrap/css/bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://adminlte.io/themes/v3/dist/css/adminlte.min.css">
+  <!-- Custom CSS -->
+ <!-- Bootstrap CSS -->
+ <link href="css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+ <link href="css/tiny-slider.css" rel="stylesheet">
+ <link href="css/style.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+  </style>
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+<!-- Start Header/Navigation -->
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+  <div class="container">
+    <a class="navbar-brand" href="./furni-1.0.0/index.html">E-Parking<span>.</span></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsFurni">
+      <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="./furni-1.0.0/index.html">Home</a>
+        </li>
+        <li><a class="nav-link" href="./login/index.html">Log In</a></li>
+        <li><a class="nav-link" href="regis.html">Reg User</a></li>
+        <li><a class="nav-link" href="regiskendaraan.html">Reg Kendaraan</a></li>
+        <li><a class="nav-link" href="data_parkir.html">Data Area Parkir</a></li>
+
+      </ul>
+    </div>
+  </div>
+    
+</nav>
+<!-- End Header/Navigation -->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Hallo Admin</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <section class="content">
+      <!-- Your page content goes here -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Data Area Parkir</h3>
+              </div>
+              <div class="card-body">
+                <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addBorrowerModal">Form Area Parkir</button>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Nama Area</th>
+                      <th>Kapasitas</th>
+                      <th>Nama Gedung</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody id="borrowerList">
+                    <!-- Data peminjam akan ditampilkan di sini -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Formulir Modal untuk Tambah Peminjam -->
+  <div class="modal fade" id="addBorrowerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Peminjam</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Formulir untuk menambah peminjam -->
+          <form id="addBorrowerForm">
+            <div class="form-group">
+              <label for="addBorrowerName">Nama Area:</label>
+              <input type="text" class="form-control" id="addBorrowerName" required>
+            </div>
+            <div class="form-group">
+              <label for="addBorrowerCapacity">Kapasitas:</label>
+              <input type="text" class="form-control" id="addBorrowerCapacity" required>
+            </div>
+            <div class="form-group">
+              <label for="addBorrowerBuilding">Nama Gedung:</label>
+              <input type="text" class="form-control" id="addBorrowerBuilding" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah Peminjam</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulir Modal untuk Edit Peminjam -->
+  <div class="modal fade" id="editBorrowerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Peminjam</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Formulir untuk mengedit peminjam -->
+          <form id="editBorrowerForm">
+            <div class="form-group">
+              <label for="editBorrowerName">Nama Area:</label>
+              <input type="text" class="form-control" id="editBorrowerName" required>
+            </div>
+            <div class="form-group">
+              <label for="editBorrowerCapacity">Kapasitas:</label>
+              <input type="text" class="form-control" id="editBorrowerCapacity" required>
+            </div>
+            <div class="form-group">
+              <label for="editBorrowerBuilding">Nama Gedung:</label>
+              <input type="text" class="form-control" id="editBorrowerBuilding" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript for handling borrower data -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Contoh data peminjam
+      var borrowers = [
+        { name: "Area Depan B2", capacity: "100", building: "Kampus B2 STT-NF" },
+        { name: "Area Belakang B2", capacity: "40", building: "Kampus B2 STT-NF" }
+        // Tambahkan peminjam sesuai logika aplikasi Anda
+      ];
+
+      // Fungsi untuk menampilkan data peminjam
+      function displayBorrowers() {
+        var borrowerList = document.getElementById("borrowerList");
+        borrowerList.innerHTML = "";
+
+        borrowers.forEach(function (borrower, index) {
+          var row = borrowerList.insertRow();
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+
+          cell1.innerHTML = index + 1;
+          cell2.innerHTML = borrower.name;
+          cell3.innerHTML = borrower.capacity;
+          cell4.innerHTML = borrower.building;
+
+          // Tambahkan tombol Edit dan Delete
+          var editButton = createButton("Edit", "btn-warning", function () {
+            openEditBorrowerModal(index);
+          });
+
+          var deleteButton = createButton("Delete", "btn-danger", function () {
+            deleteBorrower(index);
+          });
+
+          cell5.appendChild(editButton);
+          cell5.appendChild(deleteButton);
+        });
+      }
+
+      // Fungsi untuk menangani pengiriman formulir tambah peminjam
+      document.getElementById("addBorrowerForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var name = document.getElementById("addBorrowerName").value;
+        var capacity= document.getElementById("addBorrowerCapacity").value;
+        var building = document.getElementById("addBorrowerBuilding").value;
+
+        borrowers.push({ name: name, capacity: capacity, building: building });
+        displayBorrowers();
+        $("#addBorrowerModal").modal("hide");
+      });
+
+      // Fungsi untuk membuka modal edit peminjam
+      window.openEditBorrowerModal = function (index) {
+        var borrower = borrowers[index];
+        document.getElementById("editBorrowerName").value = borrower.name;
+        document.getElementById("editBorrowerCapacity").value = borrower.capacity;
+        document.getElementById("editBorrowerBuilding").value = borrower.building;
+
+        $("#editBorrowerModal").modal("show");
+
+        // Fungsi untuk menangani pengiriman formulir edit peminjam
+        document.getElementById("editBorrowerForm").addEventListener("submit", function (event) {
+          event.preventDefault();
+          borrower.name = document.getElementById("editBorrowerName").value;
+          borrower.capacity = document.getElementById("editBorrowerCapacity").value;
+          borrower.building = document.getElementById("editBorrowerBuilding").value;
+
+          displayBorrowers();
+          $("#editBorrowerModal").modal("hide");
+        });
+      };
+
+      // Fungsi untuk menghapus peminjam
+      window.deleteBorrower = function (index) {
+        borrowers.splice(index, 1);
+        displayBorrowers();
+      };
+
+      // Fungsi untuk membuka halaman kategori (bisa diganti sesuai kebutuhan)
+      window.openCategoriesPage = function () {
+        // Ganti URL sesuai dengan halaman kategori
+        window.location.href = "categories.html";
+      };
+
+      // Fungsi pembantu untuk membuat tombol
+      function createButton(text, className, clickHandler) {
+        var button = document.createElement("button");
+        button.innerHTML = text;
+        button.className = "btn " + className;
+        button.addEventListener("click", clickHandler);
+        return button;
+      }
+
+      // Tampilkan data peminjam saat halaman dimuat
+      displayBorrowers();
+    });
+  </script>
+
+  <!-- jQuery -->
+  <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js"></script>
+
+</body>
+</html>
+
